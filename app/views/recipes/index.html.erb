@@ -1,0 +1,13 @@
+<div class="recipes">
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col s12 m6 l4">
+        <div class="card hoverable">
+          <%= link_to image_tag(recipe.image.url, class: "responsive-img index-img"), 
+            recipe_path(recipe) %>
+          <p><%= link_to recipe.title, recipe_path(recipe) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

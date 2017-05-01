@@ -1,0 +1,42 @@
+<div class="card hoverable center">
+  <div class="row">
+    <div class="col s12 m12 l8">
+      <blockquote>
+        <strong><%= recipe.title %></strong>
+        <p><%= recipe.description %></p>
+        <div class="link">
+          <%= link_to root_path do %>
+            <i class="material-icons">arrow_back</i>
+          <% end %>
+          <%= link_to [:edit, recipe] do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+          <%= link_to recipe_path(recipe),data: { confirm: "Are you sure" },class: "red-text", method: :delete do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+        </div>
+       <div class="row">
+         <div class="col m6">
+            <h4>Ingredients</h4>
+            <ol>
+              <% recipe.ingredients.each do |ingredient| %>
+              <li><%= ingredient.name %></li>
+              <% end %>
+            </ol>
+         </div>
+         <div class="col m6">
+            <ol>
+              <h4>Directions</h4>
+              <% recipe.directions.each do |direction| %>
+                <li><%= direction.step %></li>
+              <% end %>
+            </ol>
+         </div>
+       </div>
+      </blockquote>
+    </div>
+    <div class="col s12 m12 l4">
+      <%= image_tag recipe.image.url, class: "responsive-img" %>
+    </div>
+  </div>
+</div>

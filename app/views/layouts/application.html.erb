@@ -8,7 +8,50 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body> 
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <%= link_to Recipe, root_path, class: "brand-logo" %>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <%= link_to "Sign in", "#" %>
+          </li>
+          <li>
+            <%= link_to "Sign out", "#" %>
+          </li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li>
+            <%= link_to "Sign in", "#" %>
+          </li>
+          <li>
+            <%= link_to "Sign out", "#" %>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#test1">Test 1</a></li>
+          <li class="tab"><a href="#test2">Test 2</a></li>
+        </ul>
+      </div>
+  </nav>
+  <div class="center">
+    <div id="test1" class="col s12">
+      <div class="container">
+        <% flash.each do |key, msg| %>
+          <%= javascript_tag "Materialize.toast('#{msg}', 4000, '#{key}')" %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+    <div id="test2" class="col s12">Test 2</div>
+  </div>
+   <div class="fixed-action-btn horizontal">
+      <%= link_to new_recipe_path, class: "btn-floating blue" do %>
+        <i class="large material-icons">add</i>
+      <% end %>
+    </div>
   </body>
 </html>
